@@ -1,0 +1,54 @@
+﻿<Window x:Class="RPGGame.StatsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RPGGame"
+        mc:Ignorable="d"
+        Title="StatsWindow" Height="500" Width="1000" WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF060A2E" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"></ColumnDefinition>
+            <ColumnDefinition Width="100*"></ColumnDefinition>
+            <ColumnDefinition Width="100*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="bossesKilledLabel" Foreground="WHITE" Content="Bosses killed: " Margin="5,0,0,0" 
+               Grid.Column="0" Grid.Row ="1" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Algerian" FontSize="20"/>
+        <Label x:Name="miniBossesKilledLabel" Foreground="WHITE" Content="Mini bosses killed: " Margin="5,0,0,0" 
+              Grid.Column="0" Grid.Row ="2" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Algerian" FontSize="20"/>
+        <Label x:Name="enemiesKilledLabel" Foreground="WHITE" Content="Enemies killed: " Margin="5,0,0,0"
+               Grid.Column="0" Grid.Row ="3" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Algerian" FontSize="20"/>
+        <Label x:Name="moneySpentLabel" Foreground="WHITE" Content="Money spent: " Margin="5,0,0,0"
+               Grid.Column="0" Grid.Row ="4" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Algerian" FontSize="20"/>
+        <Label x:Name="itemsBoughtLabel" Foreground="WHITE" Content="Items bought: " Margin="5,0,0,0"
+               Grid.Column="0" Grid.Row ="5" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Algerian" FontSize="20"/>
+        <Label x:Name="specialAttacksUsedLabel" Foreground="WHITE" Content="Special attacks used: " Margin="5,0,0,0"
+               Grid.Column="0" Grid.Row = "6" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Algerian" FontSize="20"/>
+        <Label x:Name="critsDealtLabel" Foreground="WHITE"  Content="Crit damage dealt: " Margin="5,0,0,0"
+               Grid.Column="0" Grid.Row ="7" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Algerian" FontSize="20"/>
+        <Label Foreground="WHITE" Content="Stats during the game" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Algerian" FontSize="20"/>
+        <Button Grid.Column="2" Content="X" Foreground="Red" HorizontalAlignment="Right" VerticalAlignment="Top"
+                Height="20" Width="30" Background="Transparent" BorderBrush="Red" Click="Button_Click" Margin="0,2,0,0"/>
+    </Grid>
+
+</Window>

@@ -1,0 +1,54 @@
+﻿<Window x:Class="RPGGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RPGGame"
+        mc:Ignorable="d" FontSize="20" FontFamily="Papyrus"
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStyle="None"    
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF060A2E" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto" MinHeight="300"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <!--<ColumnDefinition Width="*"/>-->
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Pick your character class" Margin="5" 
+                   Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
+                   FontWeight="Bold" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Image x:Name="imageWarrior" Source="C:\Users\Martin\source\repos\RPGGame\RPGGame\Images\warrior.png" Grid.Row="1" Grid.Column="1" Margin="10" 
+               VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="ChooseWarrior"/>
+
+        <Image x:Name="imageRogue" Source="C:\Users\Martin\source\repos\RPGGame\RPGGame\Images\rogue.png" Grid.Row="1" Grid.Column="2" 
+               VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="ChooseRogue" Height="280" Width="140"/>
+
+        <Image x:Name="imageMage" Source="C:\Users\Martin\source\repos\RPGGame\RPGGame\Images\mage.png" Grid.Row="1" Grid.Column="3" Margin="10" 
+               VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="ChooseMage"/>
+
+        <!--<Image x:Name="Engineer" Source="C:\Users\Martin\Desktop\OOPProject\engineer.png" Grid.Row="1" Grid.Column="5" Margin="10" 
+               VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
+
+        <Image x:Name="imageSniper" Source="C:\Users\Martin\source\repos\RPGGame\RPGGame\Images\sniper.png" Grid.Row="1" Grid.Column="4" Margin="10" 
+               VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="ChooseSniper"/>
+    </Grid>
+</Window>

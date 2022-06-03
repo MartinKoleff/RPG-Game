@@ -1,0 +1,196 @@
+﻿<Window x:Class="RPGGame.GameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RPGGame"
+        mc:Ignorable="d"
+        Title="GameWindow" Height="500" Width="1000" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
+
+    <!--Background color-->
+    <Grid >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF060A2E" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        
+        <!--Screen Separation-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Stats-->
+        <Grid Grid.Column="0">
+            <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
+                <Border BorderThickness="2" ClipToBounds="True">
+                    <Canvas Margin="5,20,5,0" x:Name="CanvasStats" Width="230" Height="280">
+                        <Canvas.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF488DA4"/>
+                                <GradientStop Color="#FF190EF4" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Canvas.Background>
+
+                        <Rectangle Height="260" Canvas.Left="114" Stroke="Black" Canvas.Top="10" Width="2" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleY="0"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform Y="0"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                        <Label Content="Hero" Canvas.Top="10" Canvas.Left="10" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontFamily="Algerian"/>
+                        <Label Content="Enemy" Canvas.Top="10" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontFamily="Algerian"/>
+                        <Label x:Name="heroHealthLabel" Content="Health: " Canvas.Top="40" Canvas.Left="10" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Algerian"/>
+                        <Label x:Name="heroDamageLabel" Content="Damage: " Canvas.Top="70" Canvas.Left="10" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Algerian"/>
+                        <Label x:Name="heroDefenceLabel" Content="Defence: " Canvas.Top="100" Canvas.Left="10" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Algerian"/>
+                        <Label x:Name="heroLuckLabel" Content="Luck: " Canvas.Top="130" Canvas.Left="10" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Algerian"/>
+                        <Label x:Name="heroTypeLabel" Content="Type: " Canvas.Top="160" Canvas.Left="10" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Algerian"/>
+                        <Label x:Name="waveLabel" Content="Wave: 1" Canvas.Left="10" Canvas.Top="190" HorizontalAlignment="Center" VerticalAlignment="Top" Width="99" FontFamily="Algerian"/>
+                        <Label x:Name="moneyLabel" Content="Money: 0 lv" Canvas.Top="220" Canvas.Left="10" Width="99" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Algerian"/>
+                        <Label x:Name="heroSpecLabel" Content="Specialization: " Canvas.Top="250"  Canvas.Left="10" Width="99" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Algerian"/>
+                        <Label x:Name="enemyHealthLabel" Content="Health: " Canvas.Top="40" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Algerian"/>
+                        <Label x:Name="enemyDamageLabel" Content="Damage: " Canvas.Top="70" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Algerian"/>
+                        <Label x:Name="enemyDefenceLabel" Content="Defence: " Canvas.Top="100" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Algerian"/>
+                        <Label x:Name="enemyLuckLabel" Content="Luck: " Canvas.Top="130" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Algerian"/>
+                        <Label x:Name="enemyTypeLabel" Content="Type: " Canvas.Top="160" Canvas.Left="120" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Algerian"/>
+                    </Canvas>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1" >
+            <Border BorderThickness="2" ClipToBounds="True" Height="350">
+                <Canvas Margin="5,20,5,0" x:Name="CanvasGameScreen" Width="480" Height="320">
+                    <Canvas.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF488DA4"/>
+                            <GradientStop Color="#FF190EF4" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Canvas.Background>
+
+                    <!--Hero and Enemy Images-->
+                    <Image x:Name="ImageHero" Height="250" Canvas.Left="230" Canvas.Top="70" Width="250"
+                           HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                    <!--MouseDown="showHeroStats_MouseDown"-->
+                    <Image x:Name="ImageEnemy" Height="250" Canvas.Left="0" Canvas.Top="70" Width="250"
+                           HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                    <!--Health Bars-->
+                    <ProgressBar x:Name="heroHealthBar" Height="15" Canvas.Left="330" Canvas.Top="19" Width="140" 
+                                 HorizontalAlignment="Right" VerticalAlignment="Center"
+                                 Foreground="#FF4DFF00" BorderBrush="Black" Background="Red" Maximum="1000"/>
+                    <ProgressBar x:Name="enemyHealthBar" Height="15" Canvas.Left="10" Canvas.Top="19" Width="140"
+                                 HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                 Background="Red" Foreground="#FF03FF00" BorderBrush="Black" Maximum="1000"/>
+                </Canvas>
+            </Border>
+
+            <!--Buttons Separation-->
+            <Grid x:Name="buttonGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="83*"></ColumnDefinition>
+                    <ColumnDefinition Width="83*"></ColumnDefinition>
+                    <ColumnDefinition Width="83*"></ColumnDefinition>
+                    <ColumnDefinition Width="83*"></ColumnDefinition>
+                    <ColumnDefinition Width="83*"></ColumnDefinition>
+                    <ColumnDefinition Width="83*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <!--Inventory-->
+                <Image Name="Item1" MouseDown="Item1_MouseDown" Grid.Column="0" Grid.Row="0" Margin="5,0,5,0"/>
+                <Image Name="Item2" MouseDown="Item2_MouseDown" Grid.Column="1" Grid.Row="0" Margin="5,0,5,0"/>
+                <Image Name="Item3" MouseDown="Item3_MouseDown" Grid.Column="2" Grid.Row="0" Margin="5,0,5,0"/>
+                <Image Name="Item4" MouseDown="Item4_MouseDown" Grid.Column="3" Grid.Row="0" Margin="5,0,5,0"/>
+                <Image Name="Item5" MouseDown="Item5_MouseDown" Grid.Column="4" Grid.Row="0" Margin="5,0,5,0"/>
+                <Image Name="Item6" MouseDown="Item6_MouseDown" Grid.Column="5" Grid.Row="0" Margin="5,0,5,0"/>
+
+                <!--Buttons-->
+                <Button x:Name="buttonFight" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,50,0,0" 
+                            Content="Fight" FontFamily="Algerian" Width="125" Height="50" 
+                            VerticalAlignment="Top" HorizontalAlignment="Center" Click="buttonFight_Click" BorderBrush="Black" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF488DA4"/>
+                            <GradientStop Color="#FF190EF4" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <Button x:Name="buttonSpecialAttack" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,50,0,0" 
+                            Content="Special Attack" FontFamily="Algerian" Width="125" Height="50" 
+                            VerticalAlignment="Top" HorizontalAlignment="Center" Click="buttonSpecialAttack_Click" BorderBrush="Black" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF488DA4"/>
+                            <GradientStop Color="#FF190EF4" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </StackPanel>
+
+        <!--Shop-->
+        <Grid Grid.Column="2">
+
+            <StackPanel Orientation="Vertical" >
+                <Border BorderThickness="2" ClipToBounds="True">
+                    <Canvas Margin="5,20,5,0" x:Name="CanvasShop" Width="230" Height="300">
+                        <Canvas.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF488DA4"/>
+                                <GradientStop Color="#FF190EF4" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Canvas.Background>
+
+                        <!--Items Separation (MAKE IT 3x2)-->
+                        <Grid HorizontalAlignment="Center" Height="300" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="115"></ColumnDefinition>
+                                <ColumnDefinition Width="115"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"></RowDefinition>
+                                <RowDefinition Height="100"></RowDefinition>
+                                <RowDefinition Height="100"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <!--Shop Items-->
+                            <Image Name="shopItem1" Grid.Column="0" Grid.Row="0" Margin="5, 10, 5, 20" MouseDown="shopItem1_MouseDown"/>
+                            <Image Name="shopItem2" Grid.Column="1" Grid.Row="0" Margin="5, 10, 5, 20" MouseDown="shopItem2_MouseDown"/>
+                            <Image Name="shopItem3" Grid.Column="0" Grid.Row="1" Margin="5,10,5, 20" MouseDown="shopItem3_MouseDown"/>
+                            <Image Name="shopItem4" Grid.Column="1" Grid.Row="1" Margin="5, 10, 5, 20" MouseDown="shopItem4_MouseDown"/>
+                            <Image Name="shopItem5" Grid.Column="0" Grid.Row="2" Margin="5, 10, 5, 20" MouseDown="shopItem5_MouseDown"/>
+                            <Image Name="shopItem6" Grid.Column="1" Grid.Row="2" Margin="5, 10, 5, 20" MouseDown="shopItem6_MouseDown"/>
+                            <Label x:Name="item1PriceLabel"  Grid.Column="0" Grid.Row="0" FontFamily="Algerian"
+                               HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, -5"/>
+                            <Label x:Name="item2PriceLabel" Grid.Column="1" Grid.Row="0" FontFamily="Algerian"
+                                  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, -5"/>
+                            <Label x:Name="item3PriceLabel" Grid.Column="0" Grid.Row="1" FontFamily="Algerian"
+                                   HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, -5"/>
+                            <Label x:Name="item4PriceLabel" Grid.Column="1" Grid.Row="1" FontFamily="Algerian"
+                                   HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, -5"/>
+                            <Label x:Name="item5PriceLabel" Grid.Column="0" Grid.Row="2" FontFamily="Algerian"
+                                   HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, -5" />
+                            <Label x:Name="item6PriceLabel" Grid.Column="1" Grid.Row="2" FontFamily="Algerian"
+                                   HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, -5" />
+                            <Label Content="Shop" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.35,0.221" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Algerian" FontSize="20"/>
+                        </Grid>
+                    </Canvas>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
